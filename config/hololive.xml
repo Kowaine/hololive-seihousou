@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    分期数据来源于萌娘百科 https://zh.moegirl.org/Template:Hololive 
+    名称及YouTube地址皆来源于hololive官方网站，全部按照官方写法。(四期生官网暂未更新中英文名，故留空)
+    暂时不包含子频道
+    (hololive官网并未指向子频道，因为未来预定会实现脚本自动官网查询vtb列表，所以是否添加子频道有待商榷)
+-->
+<hololive>
+    <无印组>
+        <vtb>
+            <name>
+                <zh>时乃空</zh>
+                <ja>ときのそら</ja>
+                <en>Tokino Sora</en>
+            </name>
+            <link>https://www.youtube.com/channel/UCp6993wxpyDPHUpavwDFqgg</link>
+        </vtb>
+        <!--
+        <vtb>
+            <name>
+                <zh>友人A</zh>
+                <ja>友人A</ja>
+                <en></en>
+            </name>
+            <link></link>
+        </vtb>
+        -->
+        <vtb>
+            <name>
+                <zh>萝卜子</zh>
+                <ja>ロボ子さん</ja>
+                <en>Roboco-san</en>
+            </name>
+            <link>https://www.youtube.com/channel/UCDqI2jOz0weumE8s7paEk6g</link>
+        </vtb>
+        <vtb>
+            <name>
+                <zh>樱巫女</zh>
+                <ja>さくらみこ</ja>
+                <en>Sakuramiko</en>
+            </name>
+            <link>https://www.youtube.com/channel/UC-hM6YJuNYVAmUWxeIr9FeA</link>
+        </vtb>
+        <vtb>
+            <name>
+                <zh>星街彗星</zh>
+                <ja>星街すいせい</ja>
+                <en>Hoshimachi Suisei</en>
+            </name>
+            <link>https://www.youtube.com/channel/UC5CwaMl1eIgY8h02uZw7u8A</link>
+        </vtb>
+    </无印组>
+    <一期生>
+        <vtb>
+            <name>
+                <zh>夜空梅露</zh>
+                <ja>夜空メル</ja>
+                <en>Yozora Mel</en>
+            </name>
+            <link>https://www.youtube.com/channel/UCD8HOxPs4Xvsm8H0ZxXGiBw</link>
+        </vtb>
+        <vtb>
+            <name>
+                <zh>亚绮-罗森</zh>
+                <ja>アキ・ローゼンタール</ja>
+                <en>Aki Rosenthal</en>
+            </name>
+            <link>https://www.youtube.com/channel/UCFTLzh12_nrtzqBPsTCqenA</link>
+        </vtb>
+        <vtb>
+            <name>
+                <zh>赤井心</zh>
+                <ja>赤井はあと</ja>
+                <en>Akai Haato</en>
+            </name>
+            <link>https://www.youtube.com/channel/UC1CfXB_kRs3C-zaeTG3oGyg</link>
+        </vtb>
+        <vtb>
+            <name>
+                <zh>白上吹雪</zh>
+                <ja>白上フブキ</ja>
+                <en>Shirakami Fubuki</en>
+            </name>
+            <link>https://www.youtube.com/channel/UCdn5BQ06XqgXoAxIhbqw5Rg</link>
+        </vtb>
+        <vtb>
+            <name>
+                <zh>夏色祭</zh>
+                <ja>夏色まつり</ja>
+                <en>Natsuiro Matsuri</en>
+            </name>
+            <link>https://www.youtube.com/channel/UCQ0UDLQCjY0rmuxCDE38FGg</link>
+        </vtb>
+    </一期生>
+    <二期生>
+        <vtb>
+            <name>
+                <zh>湊-阿库娅</zh>
+                <ja>湊あくあ</ja>
+                <en>Minato Aqua</en>
+            </name>
+            <link>https://www.youtube.com/channel/UC1opHUrw8rvnsadT-iGp7Cg</link>
+        </vtb>
+        <vtb>
+            <name>
+                <zh>紫咲诗音</zh>
+                <ja>紫咲シオン</ja>
+                <en>Murasaki Shion</en>
+            </name>
+            <link>https://www.youtube.com/channel/UCXTpFs_3PqI41qX2d9tL2Rw</link>
+        </vtb>
+        <vtb>
+            <name>
+                <zh>百鬼绫目</zh>
+                <ja>百鬼あやめ</ja>
+                <en>Nakiri Ayame</en>
+            </name>
+            <link>https://www.youtube.com/channel/UC7fk0CB07ly8oSl0aqKkqFg</link>
+        </vtb>
+        <vtb>
+            <name>
+                <zh>癒月巧可</zh>
+                <ja>癒月ちょこ</ja>
+                <en>Yuzuki Choco</en>
+            </name>
+            <link>https://www.youtube.com/channel/UC1suqwovbL1kzsoaZgFZLKg</link>
+        </vtb>
+        <vtb>
+            <name>
+                <zh>大空昴</zh>
+                <ja>大空スバル</ja>
+                <en>Oozora Subaru</en>
+            </name>
+            <link>https://www.youtube.com/channel/UCvzGlP9oQwU--Y0r9id_jnA</link>
+        </vtb>
+    </二期生>
+    <Gamers>
+        <vtb>
+            <name>
+                <zh>大神澪</zh>
+                <ja>大神ミオ</ja>
+                <en>Ookami Mio</en>
+            </name>
+            <link>https://www.youtube.com/channel/UCp-5t9SrOQwXMU7iIjQfARg</link>
+        </vtb>
+        <vtb>
+            <name>
+                <zh>白上吹雪</zh>
+                <ja>白上フブキ</ja>
+                <en>Shirakami Fubuki</en>
+            </name>
+            <link>https://www.youtube.com/channel/UCdn5BQ06XqgXoAxIhbqw5Rg</link>
+        </vtb>
+        <vtb>
+            <name>
+                <zh>猫又小粥</zh>
+                <ja>猫又おかゆ</ja>
+                <en>Nekomata Okayu</en>
+            </name>
+            <link>https://www.youtube.com/channel/UCvaTdHTWBGv3MKj3KVqJVCw</link>
+        </vtb>
+        <vtb>
+            <name>
+                <zh>戌神沁音</zh>
+                <ja>戌神ころね</ja>
+                <en>Inugami Korone</en>
+            </name>
+            <link>https://www.youtube.com/channel/UChAnqc_AY5_I3Px5dig3X1Q</link>
+        </vtb>
+    </Gamers>
+    <三期生>
+        <vtb>
+            <name>
+                <zh>兔田佩克拉</zh>
+                <ja>兎田ぺこら</ja>
+                <en>Usada Pekora</en>
+            </name>
+            <link>https://www.youtube.com/channel/UC1DCedRgGHBdm81E1llLhOQ</link>
+        </vtb>
+        <vtb>
+            <name>
+                <zh>润羽露西娅</zh>
+                <ja>潤羽るしあ</ja>
+                <en>Uruha Rushia</en>
+            </name>
+            <link>https://www.youtube.com/channel/UCl_gCybOJRIgOXw6Qb4qJzQ</link>
+        </vtb>
+        <vtb>
+            <name>
+                <zh>不知火芙蕾雅</zh>
+                <ja>不知火フレア</ja>
+                <en>Shiranui Flare</en>
+            </name>
+            <link>https://www.youtube.com/channel/UCvInZx9h3jC2JzsIzoOebWg</link>
+        </vtb>
+        <vtb>
+            <name>
+                <zh>白银诺艾尔</zh>
+                <ja>白銀ノエル</ja>
+                <en>Shirogane Noel</en>
+            </name>
+            <link>https://www.youtube.com/channel/UCdyqAaZDKHXg4Ahi7VENThQ</link>
+        </vtb>
+        <vtb>
+            <name>
+                <zh>宝钟玛琳</zh>
+                <ja>宝鐘マリン</ja>
+                <en>Houshou marine</en>
+            </name>
+            <link>https://www.youtube.com/channel/UCCzUftO8KOVkV4wQG1vkUvg</link>
+        </vtb>
+    </三期生>
+    <四期生>
+        <vtb>
+            <name>
+                <zh></zh>
+                <ja>天音かなた</ja>
+                <en></en>
+            </name>
+            <link>https://www.youtube.com/channel/UCZlDXzGoo7d44bwdNObFacg</link>
+        </vtb>
+        <vtb>
+            <name>
+                <zh></zh>
+                <ja>桐生ココ</ja>
+                <en></en>
+            </name>
+            <link>https://www.youtube.com/channel/UCS9uQI-jC3DE0L4IpXyvr6w</link>
+        </vtb>
+        <vtb>
+            <name>
+                <zh></zh>
+                <ja>角巻わため</ja>
+                <en></en>
+            </name>
+            <link>https://www.youtube.com/channel/UCqm3BQLlJfvkTsX_hvm0UmA</link>
+        </vtb>
+        <vtb>
+            <name>
+                <zh></zh>
+                <ja>常闇トワ</ja>
+                <en></en>
+            </name>
+            <link>https://www.youtube.com/channel/UC1uv2Oq6kNxgATlCiez59hw</link>
+        </vtb>
+        <vtb>
+            <name>
+                <zh></zh>
+                <ja>姫森ルーナ</ja>
+                <en></en>
+            </name>
+            <link>https://www.youtube.com/channel/UCa9Y57gfeY0Zro_noHRVrnw</link>
+        </vtb>
+    </四期生>
+</hololive>
