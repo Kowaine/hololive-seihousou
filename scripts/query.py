@@ -26,9 +26,6 @@ eg:
                 ...
             }
         ]
-    },
-    {
-        ...
     }
 """
 
@@ -112,7 +109,8 @@ if __name__ == '__main__':
         is_casting["description"] = is_casting_container.find_element_by_id("description-text").text
         is_casting["link"] = is_casting_container.find_element_by_id("video-title").get_attribute("href")
     except exceptions.NoSuchElementException:
-        sys.stdout.write(r"WARNING: No casting. " + info["name"] + " 没有正在进行的直播。\n")
+        if DEBUG:
+            sys.stdout.write(r"WARNING: No casting. " + info["name"] + " 没有正在进行的直播。\n")
         is_casting = None
     finally:
         info["is-casting"] = is_casting
@@ -133,7 +131,8 @@ if __name__ == '__main__':
             item_temp["meta-data"] = item.find_element_by_css_selector("#metadata-line > span").text
             will_cast.append(item_temp)
     except exceptions.NoSuchElementException:
-        sys.stdout.write(r"WARNING: No casting. " + info["name"] + " 没有预定的直播。\n")
+        if DEBUG:
+            sys.stdout.write(r"WARNING: No casting. " + info["name"] + " 没有预定的直播。\n")
         will_cast = None
     finally:
         info["will-cast"] = will_cast
@@ -147,5 +146,6 @@ if __name__ == '__main__':
 
     """ 关闭 """
     if DEBUG:
-            print(info)
+        print(info)
+        sys.stdout.write("信息查询完成。\n")
     browser.quit()
