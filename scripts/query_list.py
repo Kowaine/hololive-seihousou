@@ -112,7 +112,7 @@ if __name__ == '__main__':
 
     
     """ 将数据写入文件 """
-    filename = "data/" + re.search("[^/\\\\]{1,}(?<=\\.xml)$", args.xml).group() + ".json"
+    filename = "data/" + re.search("[^/\\\\]{1,}(?=\\.xml$)", args.xml).group() + ".json"
     with open(filename, "w", encoding="utf8") as f:
         json.dump(data, f)
 
