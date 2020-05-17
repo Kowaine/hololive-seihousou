@@ -7,6 +7,7 @@ eg:
     {
         "name": "フブキCh。白上フブキ", 
         "head": "https://yt3.ggpht.com/a/AATXAJwQ-d9UTMFsLifyHKfEGU-GILwojhtCEk8qEA=s100-c-k-c0xffffffff-no-rj-mo",
+        "link": "https://youtube.com/xxxxx",
         "is-casting": 
         {
             "title": "xxx",
@@ -97,6 +98,7 @@ if __name__ == '__main__':
     channel_header = browser.find_element_by_id("channel-header-container")
     info["name"] = channel_header.find_element_by_css_selector("yt-formatted-string[class*='ytd-channel-name']").text
     info["head"] = channel_header.find_element_by_id("img").get_attribute("src")
+    info["link"] = args.url
 
     # 获取正在直播信息
     is_casting = {}

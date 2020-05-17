@@ -10,6 +10,7 @@ eg:
         {
             "name": "フブキCh。白上フブキ", 
             "head": "https://yt3.ggpht.com/a/AATXAJwQ-d9UTMFsLifyHKfEGU-GILwojhtCEk8qEA=s100-c-k-c0xffffffff-no-rj-mo",
+            "link": "https://youtube.com/xxxxx",
             "is-casting": 
             {
                 "title": "xxx",
@@ -95,13 +96,14 @@ if __name__ == '__main__':
     tag_list = ["无印组", "一期生", "二期生", "三期生", "四期生"]
     process_list = []
     for tag in tag_list:
-        temp_process = multiprocessing.Process(target=query_generation, args=(hololive_dom, tag,))
-        temp_process.start()
-        process_list.append(temp_process)
+        # temp_process = multiprocessing.Process(target=query_generation, args=(hololive_dom, tag,))
+        # temp_process.start()
+        # process_list.append(temp_process)
+        query_generation(hololive_dom, tag)
 
     # 等待子进程完成
-    for process in process_list:
-        process.join()
+    # for process in process_list:
+    #     process.join()
 
     sys.stdout.write("信息查询完成。\n")
 
