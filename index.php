@@ -155,6 +155,9 @@
             <a class="navbar-brand" href="#">Hololive生放送查询工具</a>
             <ul class="navbar-nav">
                 <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/Kowaine/hololive-seihousou" target="_blank">项目地址@Github</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" data-target="#document">部分说明</a>
                 </li>
                 <li class="nav-item">
