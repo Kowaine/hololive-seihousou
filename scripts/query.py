@@ -103,7 +103,7 @@ if __name__ == '__main__':
     # 获取正在直播信息
     is_casting = {}
     try:
-        is_casting_container = browser.find_element_by_xpath("//a[@title='正在直播']/ancestor::ytd-item-section-renderer")
+        is_casting_container = browser.find_element_by_xpath("//span[contains(@class,'ytd-badge-supported-renderer')]/ancestor::ytd-item-section-renderer")
         if DEBUG:
             print("找到正在直播容器")
         is_casting["title"] = is_casting_container.find_element_by_id("video-title").get_attribute("title")
