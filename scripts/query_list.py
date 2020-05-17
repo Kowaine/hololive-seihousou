@@ -93,7 +93,7 @@ if __name__ == '__main__':
 
 
     """ 根据信息调用查询脚本 """
-    tag_list = ["无印组", "一期生", "二期生", "三期生", "四期生"]
+    tag_list = ["无印组", "一期生", "二期生", "Gamers", "三期生", "四期生"]
     process_list = []
     for tag in tag_list:
         # temp_process = multiprocessing.Process(target=query_generation, args=(hololive_dom, tag,))
