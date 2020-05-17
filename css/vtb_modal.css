@@ -1,0 +1,30 @@
+/* vtb卡片所带模态框 */
+.vtb-modal #head
+{
+    width:10%;
+    height:auto;
+    border-radius:50%;
+    border:2px solid #888888;
+}
+
+.vtb-modal .player
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.vtb-modal .player-container
+{
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
+/* .vtb-modal .header
+{
+    align-items: flex-end;
+} */

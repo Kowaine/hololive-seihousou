@@ -1,0 +1,50 @@
+/* vtb卡片 */
+.vtb-card
+{
+    box-shadow: 7px 7px 5px #888888;
+    border-radius:5%;
+    transition:all 0.6s;
+    padding: 0em;
+    cursor: pointer;
+}
+
+.vtb-card:hover
+{
+    transform:scale(1.2);
+    z-index: 100;
+}
+
+.vtb-card img
+{
+    width:35%;
+    height:auto;
+    border-radius:50%;
+    border:2px solid #888888;
+}
+
+.vtb-card #card
+{
+    padding: 2px;
+    height: 100%;
+}
+
+.vtb-card .card-body .label
+{
+    font-size: 0.5em;
+    width: 1em;
+    height: 1em;
+    padding: 0em;
+    border-radius:50%;
+    margin: 1em auto;
+}
+
+.vtb-card .card-body .label-danger
+{
+    background-color: red;
+}
+
+.vtb-card .card-body .label-success
+{
+    background-color: green;
+}
+
