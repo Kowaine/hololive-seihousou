@@ -49,7 +49,9 @@ if __name__ == '__main__':
     """ 参数处理 """
     parser = argparse.ArgumentParser()
     parser.add_argument('--url', type=str, default=None)
+    parser.add_argument('--path', type=str, default="")
     args = parser.parse_args()
+    args.path.replace("\\", "/")
     if args.url == None:
         sys.stderr.write(r"ERROR: No target link. 没有作为目标的链接。\n")
         sys.exit(-1)
@@ -141,7 +143,7 @@ if __name__ == '__main__':
     
 
     """ 保存到文件 """
-    filename = "data/" + re.search("[^/]{1,}$", args.url).group() + ".json"
+    filename = args.path + "data/" + re.search("[^/]{1,}$", args.url).group() + ".json"
     with open(filename, "w+", encoding="utf8") as f:
         json.dump(info, f)
 

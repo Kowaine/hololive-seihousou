@@ -46,13 +46,13 @@ import os, json, argparse, sys, multiprocessing, re
 from xml.dom.minidom import parse
 from xml.dom import minidom
 
-def query_generation(filedom, tagname):
+def query_generation(filedom, tagname, path):
     generation = filedom.getElementsByTagName(tagname)[0]
     process_list = []
     for vtb in generation.getElementsByTagName("vtb"):
         if DEBUG:
             print(vtb.getElementsByTagName("link")[0].childNodes[0].data)
-        cmd = "python " + SCRIPT + " --url " + vtb.getElementsByTagName("link")[0].childNodes[0].data
+        cmd = "python " + path + SCRIPT + " --url " + vtb.getElementsByTagName("link")[0].childNodes[0].data + " --path " + path
         # os.system(cmd)
         # _thread.start_new_thread(os.system, cmd)
         temp_process = multiprocessing.Process(target=os.system, args=(cmd,))
@@ -64,14 +64,14 @@ def query_generation(filedom, tagname):
         process.join()
 
 
-def read_generation(filedom, tagname):
+def read_generation(filedom, tagname, path):
     """ 分别读取每一分组的直播信息 """
     file_reg = re.compile("[^/]{1,}$")
     generation_info = []
     generation = filedom.getElementsByTagName(tagname)[0]
     for vtb in generation.getElementsByTagName("vtb"):
         link = vtb.getElementsByTagName("link")[0].childNodes[0].data
-        filename = "data/" + file_reg.search(link).group() + ".json"
+        filename = path + "data/" + file_reg.search(link).group() + ".json"
         with open(filename, "r", encoding="utf8") as f:
             generation_info.append(json.load(f))
     return generation_info
@@ -82,7 +82,10 @@ if __name__ == '__main__':
     """ 参数处理 """
     parser = argparse.ArgumentParser()
     parser.add_argument('--xml', type=str, default=None)
+    parser.add_argument('--path', type=str, default="")
     args = parser.parse_args()
+    args.xml.replace("\\", "/")
+    args.path.replace("\\", "/")
     if args.xml == None:
         sys.stderr.write(r"ERROR: No target xml. 没有作为目标的xml文件。\n")
         sys.exit(-1)
@@ -99,7 +102,7 @@ if __name__ == '__main__':
         # temp_process = multiprocessing.Process(target=query_generation, args=(hololive_dom, tag,))
         # temp_process.start()
         # process_list.append(temp_process)
-        query_generation(hololive_dom, tag)
+        query_generation(hololive_dom, tag, args.path)
 
     # 等待子进程完成
     # for process in process_list:
@@ -110,11 +113,11 @@ if __name__ == '__main__':
     """ 统合所有数据 """
     data = {}
     for tag in tag_list:
-        data[tag] = read_generation(hololive_dom, tag)
+        data[tag] = read_generation(hololive_dom, tag, args.path)
 
     
     """ 将数据写入文件 """
-    filename = "data/" + re.search("[^/\\\\]{1,}(?=\\.xml$)", args.xml).group() + ".json"
+    filename = args.path + "data/" + re.search("[^/\\\\]{1,}(?=\\.xml$)", args.xml).group() + ".json"
     with open(filename, "w", encoding="utf8") as f:
         json.dump(data, f)
 
