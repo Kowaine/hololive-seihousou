@@ -11,7 +11,9 @@
             "program": "${file}",
             "args": [
                 "--xml",
-                "config/hololive.xml"
+                "E:\\Github\\hololive-seihousou\\config/hololive.xml",
+                "--path",
+                "E:\\Github\\hololive-seihousou\\"
             ],
             "console": "integratedTerminal"
         },
@@ -29,7 +31,9 @@
             "program": "${file}",
             "args": [
                 "--url",
-                "https://www.youtube.com/channel/UCS9uQI-jC3DE0L4IpXyvr6w"
+                "https://www.youtube.com/channel/UCS9uQI-jC3DE0L4IpXyvr6w",
+                "--path",
+                "E:\\Github\\hololive-seihousou\\"
             ],
             "console": "integratedTerminal"
         }
