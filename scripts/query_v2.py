@@ -40,9 +40,11 @@ else:
 import time
 import sys, json
 import re, argparse
+import requests
+from bs4 import BeautifulSoup
+from lxml import etree
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
-from selenium.common import exceptions
 
 
 if __name__ == '__main__':
@@ -56,12 +58,13 @@ if __name__ == '__main__':
         sys.stderr.write(r"ERROR: No target link. 没有作为目标的链接。\n")
         sys.exit(-1)
 
-
     """ 初始化 """
     # 无界面化
     browser = None
     profile = webdriver.FirefoxProfile()
     profile.set_preference('intl.accept_languages', 'zh_CN')
+    profile.set_preference('permissions.default.image', 2)
+    profile.set_preference('permissions.default.stylesheet', 2)
     if DEBUG:
         # browser = webdriver.Chrome()
         browser = webdriver.Firefox(profile)
@@ -84,35 +87,49 @@ if __name__ == '__main__':
         "will-cast": []      
     }
 
+    # # 构造headers
+    # headers = {
+    #     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\
+    #     (KHTML, like Gecko) Chrome/83.0.4103.106 Safari/537.36",
+    #     ":authority": "www.youtube.com",
+    #     "x-client-data": "CIe2yQEIpbbJAQjEtskBCKmdygEI/rzKAQjmxsoBCOfIygEItMvKAQ==",
+    # }
+
 
     """ 查询直播信息 """
     # 打开vtb空间
     browser.get(args.url)
+    res = browser.page_source
+    browser.quit()
     if DEBUG:
         # time.sleep(10)
         pass
     else:
         pass
-    # print(browser.page_source)
+        # print(res)
+
+    page = BeautifulSoup(res, features="lxml")
+    page_etree = etree.HTML(res)
 
 
     # 获取vtb信息
-    channel_header = browser.find_element_by_id("channel-header-container")
-    info["name"] = channel_header.find_element_by_css_selector("yt-formatted-string[class*='ytd-channel-name']").text
-    info["head"] = channel_header.find_element_by_id("img").get_attribute("src")
+    channel_header = page.select("#channel-header-container")[0]
+    info["name"] = channel_header.select("yt-formatted-string[class*='ytd-channel-name']")[0].text
+    info["head"] = channel_header.select("#img")[0].get("src")
     info["link"] = args.url
 
     # 获取正在直播信息
     is_casting = {}
     try:
-        is_casting_container = browser.find_element_by_xpath("//span[contains(@class,'ytd-badge-supported-renderer')]/ancestor::ytd-item-section-renderer")
+        is_casting_container = page_etree.xpath("//span[contains(@class,'ytd-badge-supported-renderer') and (text()='正在直播')]/ancestor::ytd-item-section-renderer")[0]
+        is_casting_container = BeautifulSoup(etree.tostring(is_casting_container), features="lxml")
         if DEBUG:
             print("找到正在直播容器")
-        is_casting["title"] = is_casting_container.find_element_by_id("video-title").get_attribute("title")
-        is_casting["cover"] = is_casting_container.find_element_by_id("img").get_attribute("src")
-        is_casting["description"] = is_casting_container.find_element_by_id("description-text").text
-        is_casting["link"] = is_casting_container.find_element_by_id("video-title").get_attribute("href")
-    except exceptions.NoSuchElementException:
+        is_casting["title"] = is_casting_container.select("#video-title")[0].get("title")
+        is_casting["cover"] = is_casting_container.select("#img")[0].get("src")        
+        is_casting["description"] = is_casting_container.select("#description-text")[0].text
+        is_casting["link"] = is_casting_container.select("#video-title")[0].get("href")
+    except IndexError:
         if DEBUG:
             sys.stdout.write(r"WARNING: No casting. " + info["name"] + " 没有正在进行的直播。\n")
         is_casting = None
@@ -123,26 +140,27 @@ if __name__ == '__main__':
     # time_reg = re.compile("^(?<=预定发布时间：)[.]{1,}$")
     will_cast = []
     try:
-        will_cast_container = browser.find_element_by_xpath("//a[@title='即将进行的直播']/ancestor::ytd-item-section-renderer")
+        will_cast_container = page_etree.xpath("//a[@title='即将进行的直播']/ancestor::ytd-item-section-renderer")[0]
+        will_cast_container = BeautifulSoup(etree.tostring(will_cast_container), features="lxml")
         if DEBUG:
             print("找到预定直播容器")
-        will_cast_items = will_cast_container.find_elements_by_css_selector("#items > ytd-grid-video-renderer")
+        will_cast_items = will_cast_container.select("ytd-grid-video-renderer") \
+                if will_cast_container.select("ytd-grid-video-renderer") != [] \
+                else will_cast_container.select("ytd-video-renderer")
         for item in will_cast_items:
             item_temp = {}
-            item_temp["title"] = item.find_element_by_id("video-title").get_attribute("title")
-            item_temp["cover"] = item.find_element_by_id("img").get_attribute("src")
-            item_temp["link"] = item.find_element_by_id("video-title").get_attribute("href")
-            item_temp["meta-data"] = item.find_element_by_css_selector("#metadata-line > span").text
+            item_temp["title"] = item.select("#video-title")[0].get("title")
+            item_temp["cover"] = item.select("#img")[0].get("src")
+            item_temp["link"] = item.select("#video-title")[0].get("href")
+            item_temp["meta-data"] = item.select("#metadata-line > span")[0].text
             will_cast.append(item_temp)
-    except exceptions.NoSuchElementException:
+    except IndexError:
         if DEBUG:
             sys.stdout.write(r"WARNING: No casting. " + info["name"] + " 没有预定的直播。\n")
         will_cast = None
     finally:
         info["will-cast"] = will_cast
 
-    """ 关闭 """
-    browser.quit()
     
 
     """ 保存到文件 """

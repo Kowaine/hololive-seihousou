@@ -40,7 +40,7 @@ eg:
 """
 
 DEBUG = False
-SCRIPT = "scripts/query.py"
+SCRIPT = "scripts/query_v2.py"
 
 import os, json, argparse, sys, multiprocessing, re
 from xml.dom.minidom import parse
