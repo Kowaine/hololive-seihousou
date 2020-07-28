@@ -173,6 +173,9 @@ if __name__ == '__main__':
         json.dump(info, f)
 
     """ 保存到统计文件 """
+    if not os.path.exists(args.path + "data/statistics"):
+        os.mkdir(args.path + "data/statistics")
+
     statistics_filename = args.path + "data/statistics/" + vtb_id + ".json"
 
     data = {}
