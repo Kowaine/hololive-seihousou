@@ -45,6 +45,7 @@ from bs4 import BeautifulSoup
 from lxml import etree
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
+import os
 
 
 if __name__ == '__main__':
@@ -173,23 +174,23 @@ if __name__ == '__main__':
 
     """ 保存到统计文件 """
     statistics_filename = args.path + "data/statistics/" + vtb_id + ".json"
-    with open(statistics_filename, "w+", encoding="utf8") as f:
-        data = {}
-        try:
+
+    data = {}
+    if os.path.isfile(statistics_filename):
+        with open(statistics_filename, "r", encoding="utf8") as f:
             data = json.load(f)
-        except json.decoder.JSONDecodeError:
-            if DEBUG:
-                print("统计文件为空，重新记录数据")
-            data = {}
-        finally:
-            # 根据id唯一性来去重保存直播
-            if is_casting is not None:
-                live_id = id_reg.search(is_casting["link"]).group()
-                data[live_id] = is_casting
-            # for live in will_cast:
-            #     live_id = id_reg.search(live["link"])
-            #     data[live_id] = live
-            json.dump(data, f)
+    else:
+        data = {}
+
+    with open(statistics_filename, "w", encoding="utf8") as f:
+        # 根据id唯一性来去重保存直播
+        if is_casting is not None:
+            live_id = id_reg.search(is_casting["link"]).group()
+            data[live_id] = is_casting
+        # for live in will_cast:
+        #     live_id = id_reg.search(live["link"])
+        #     data[live_id] = live
+        json.dump(data, f)
 
 
     if DEBUG:
