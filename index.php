@@ -80,7 +80,7 @@
                         <div class="player-container">
                             <iframe class="player" src="https://www.youtube.com/embed/' . $isCastingId . '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
-                        <a href="' . $data["is-casting"]["link"] . '" target="_blank" title="点击前往YouTube观看">
+                        <a href="https://www.youtube.com' . $data["is-casting"]["link"] . '" target="_blank" title="点击前往YouTube观看">
                             <div><b>' . $data["is-casting"]["title"] . '</b></div>
                         </a>
                         <p>' . $data["is-casting"]["description"] . '</p>
@@ -106,7 +106,7 @@
                             <div class="player-container">
                                 <iframe class="player" src="https://www.youtube.com/embed/' . $willCastId . '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
-                            <a href="' . $live["link"] . '" target="_blank" title="点击前往YouTube观看">
+                            <a href="https://www.youtube.com' . $live["link"] . '" target="_blank" title="点击前往YouTube观看">
                                 <div><b>' . $live["title"] . '</b></div>
                             </a>
                             <p>' . $live["meta-data"] . '</p>
