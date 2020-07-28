@@ -31,7 +31,7 @@
             "program": "${file}",
             "args": [
                 "--url",
-                "https://www.youtube.com/channel/UC1CfXB_kRs3C-zaeTG3oGyg",
+                "https://www.youtube.com/channel/UCdyqAaZDKHXg4Ahi7VENThQ",
                 "--path",
                 "E:\\Github\\hololive-seihousou\\"
             ],
