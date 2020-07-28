@@ -134,13 +134,13 @@
                 
                     <!-- 模态框头部 -->
                     <div class="modal-header">
-                        <h4 class="modal-title">' . $data["name"] . '</h4>
+                        <a class="vtb-link" href="' . $data["link"] . '"><h4 class="modal-title">' . $data["name"] . '</h4></a>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                 
                     <!-- 模态框主体 -->
                     <div class="modal-body">
-                        <img id="head" src="' . $data["head"] . '" alt="头像">
+                        <a class="vtb-link" href="' . $data["link"] . '"><img id="head" src="' . $data["head"] . '" alt="头像"></a>
                         <hr  width="100%" color="#6f5499" size="3" />
                         ' . $isCasting . '
                         ' . $willCastList . '
