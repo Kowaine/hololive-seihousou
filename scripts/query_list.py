@@ -83,9 +83,16 @@ def read_generation_statistic(filedom, tagname, path):
     generation = filedom.getElementsByTagName(tagname)[0]
     for vtb in generation.getElementsByTagName("vtb"):
         link = vtb.getElementsByTagName("link")[0].childNodes[0].data
-        filename = path + "data/statistics/" + file_reg.search(link).group() + ".json"
+        vtb_id = file_reg.search(link).group()
+        vtb_name = vtb.getElementsByTagName("ja")[0].childNodes[0].data
+        filename = path + "data/statistics/" + vtb_id + ".json"
         with open(filename, "r", encoding="utf8") as f:
-            generation_info.append(json.load(f))
+            vtb_live_statistic = json.load(f)
+            vtb_statistic = {}
+            vtb_statistic["id"] = vtb_id
+            vtb_statistic["name"] = vtb_name
+            vtb_statistic["lives"] = vtb_live_statistic
+            generation_info.append(vtb_statistic)
     return generation_info
             
 
