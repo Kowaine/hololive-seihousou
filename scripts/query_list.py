@@ -75,6 +75,18 @@ def read_generation(filedom, tagname, path):
         with open(filename, "r", encoding="utf8") as f:
             generation_info.append(json.load(f))
     return generation_info
+
+def read_generation_statistic(filedom, tagname, path):
+    """ 分别读取每一分组的直播统计信息 """
+    file_reg = re.compile("[^/]{1,}$")
+    generation_info = []
+    generation = filedom.getElementsByTagName(tagname)[0]
+    for vtb in generation.getElementsByTagName("vtb"):
+        link = vtb.getElementsByTagName("link")[0].childNodes[0].data
+        filename = path + "data/statistics/" + file_reg.search(link).group() + ".json"
+        with open(filename, "r", encoding="utf8") as f:
+            generation_info.append(json.load(f))
+    return generation_info
             
 
 
@@ -118,6 +130,18 @@ if __name__ == '__main__':
     
     """ 将数据写入文件 """
     filename = args.path + "data/" + re.search("[^/\\\\]{1,}(?=\\.xml$)", args.xml).group() + ".json"
+    with open(filename, "w", encoding="utf8") as f:
+        json.dump(data, f)
+
+
+    """ 统合所有统计数据 """
+    data = {}
+    for tag in tag_list:
+        data[tag] = read_generation_statistic(hololive_dom, tag, args.path)
+
+    
+    """ 将统计数据写入文件 """
+    filename = args.path + "data/statistics/" + re.search("[^/\\\\]{1,}(?=\\.xml$)", args.xml).group() + ".json"
     with open(filename, "w", encoding="utf8") as f:
         json.dump(data, f)
 
