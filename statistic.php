@@ -61,19 +61,31 @@
                         title: {
                             text: "' . $tag . '"
                         },
-                        tooltip: {},
+                        color: ["#3398DB"],
+                        tooltip: {
+                            trigger: "axis",
+                            axisPointer: {            
+                                type: "shadow"
+                            }
+                        },
                         legend: {
                             data:[]
                         },
                         xAxis: {
-                            data: ' .  json_encode($names) . '
+                            type: "category",
+                            data: ' .  json_encode($names) . ',
+                            axisTick: {
+                                alignWithLabel: true
+                            }
                         },
                         yAxis: {
-                            minInterval: 1
+                            minInterval: 1,
+                            type: "value"
                         },
                         series: [{
                             name: "直播次数",
                             type: "bar",
+                            barWidth: "60%",
                             data: ' .  json_encode($liveCount) . '
                         }]
                     };
