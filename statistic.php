@@ -1,5 +1,5 @@
 <?php 
-    $DEBUG = true;
+    $DEBUG = false;
 ?>
 <!DOCTYPE html>
 <html lang='zh-CN'>
@@ -19,14 +19,11 @@
     <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-    <link href="css/vtb_card.css" rel="stylesheet" type="text/css" />
-    <link href="css/vtb_modal.css" rel="stylesheet" type="text/css" />
-
-    <!-- <script src="https://www.youtube.com/player_api"></script> -->
+    <script src="./js/echarts.min.js"></script>
 </head>
 <body>
     <?php include 'components/nav.php' ?>
-    <div class="container-fluid">
+    <div class="container">
         <?php
 
             // 读取文件
@@ -42,16 +39,49 @@
             $tagList = array("无印组", "一期生", "二期生", "Gamers", "三期生", "四期生");
         ?>
             <?php
-                // foreach($tagList as $tag)
-                // {
-                //     // echo '<div class="row d-flex flex-row justify-content-around mb-3 mt3 flex-wrap">';
-                //     // $generation = $data[$tag];
-                //     // foreach($generation as $vtb)
-                //     // {
-                //     //     makeCard($vtb);
-                //     // }
-                //     // echo '</div>';
-                // }
+                foreach($tagList as $tag)
+                {
+                    $generation = $data[$tag];
+                    echo '<div id="' . $tag . '" style="width:100%;height:30em;"></div>';
+                    $names = array();
+                    $liveCount = array();
+                    foreach($generation as $vtb)
+                    {
+                        array_push($names, $vtb["name"]);
+                        array_push($liveCount, count($vtb["lives"]));
+                    }
+                    
+                    echo 
+                    '<script type="text/javascript">
+                    // 基于准备好的dom，初始化echarts实例
+                    var tempChart = echarts.init(document.getElementById("' . $tag . '"));
+            
+                    // 指定图表的配置项和数据
+                    var option = {
+                        title: {
+                            text: "' . $tag . '"
+                        },
+                        tooltip: {},
+                        legend: {
+                            data:[]
+                        },
+                        xAxis: {
+                            data: ' .  json_encode($names) . '
+                        },
+                        yAxis: {
+                            minInterval: 1
+                        },
+                        series: [{
+                            name: "直播次数",
+                            type: "bar",
+                            data: ' .  json_encode($liveCount) . '
+                        }]
+                    };
+            
+                    // 使用刚指定的配置项和数据显示图表。
+                    tempChart.setOption(option);
+                    </script>';
+                }
             ?>
     </div>
 </body>

@@ -1,5 +1,5 @@
 <?php 
-    $DEBUG = true;
+    $DEBUG = false;
 ?>
 <!DOCTYPE html>
 <html lang='zh-CN'>
