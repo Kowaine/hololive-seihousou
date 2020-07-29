@@ -2,21 +2,22 @@
     $DEBUG = true;
 ?>
 <!DOCTYPE html>
-<html lang='zh'>
+<html lang='zh-CN'>
 <head>
     <meta charset='UTF-8'>
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>hololive生放送查询工具</title>
     <!-- 新 Bootstrap4 核心 CSS 文件 -->
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
  
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js"></script>
     
     <!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
-    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.16.0/umd/popper.min.js"></script>
     
     <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
     <link href="css/vtb_card.css" rel="stylesheet" type="text/css" />
     <link href="css/vtb_modal.css" rel="stylesheet" type="text/css" />
@@ -118,7 +119,7 @@
 
 
             echo 
-            '<div class="col-md-2 vtb-card" data-toggle="modal" data-target="#' . $id . '">
+            '<div class="col-md-2 vtb-card m-2 p-0 rounded" data-toggle="modal" data-target="#' . $id . '">
                 <div id="card" class="card" >
                     <img class="card-img-top m-auto" src="' . $data["head"] . '" alt="头像" />
                     <div class="card-body text-center">
@@ -150,21 +151,24 @@
             </div>';
         }
     ?>
-    <nav class="navbar navbar-expand-sm bg-secondary navbar-dark sticky-top">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-md bg-secondary navbar-dark sticky-top">
             <a class="navbar-brand" href="#">Hololive生放送查询工具</a>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="https://github.com/Kowaine/hololive-seihousou" target="_blank">项目地址@Github</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="modal" data-target="#document">部分说明</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://github.com/Kowaine" target="_blank">关于我@Github</a>
-                </li>
-            </ul>
-        </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-coll" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="navbar-coll" class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/Kowaine/hololive-seihousou" target="_blank">项目地址@Github</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="modal" data-target="#document">部分说明</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/Kowaine" target="_blank">关于我@Github</a>
+                    </li>
+                </ul>
+            </div>
     </nav>
     <!-- 模态框 -->
     <div class="modal fade" id="document">
@@ -203,7 +207,7 @@
             <?php
                 foreach($tagList as $tag)
                 {
-                    echo '<div class="row" style="flex-direction:row;justify-content:space-around;margin-bottom:1em;margin-top:1em;">';
+                    echo '<div class="row d-flex flex-row justify-content-around mb-3 mt3 flex-wrap">';
                     $generation = $data[$tag];
                     foreach($generation as $vtb)
                     {
