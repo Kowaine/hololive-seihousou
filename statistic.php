@@ -42,7 +42,7 @@
                 foreach($tagList as $tag)
                 {
                     $generation = $data[$tag];
-                    echo '<div id="' . $tag . '" class="m-3 border-bottom" style="width:30%;height:30em;"></div>';
+                    echo '<div id="' . $tag . '" class="m-3 border-bottom pb-5" style="width:30%;height:30em;"></div>';
                     $names = array();
                     $liveCount = array();
                     foreach($generation as $vtb)
@@ -78,6 +78,10 @@
                             data: ' .  json_encode($names) . ',
                             axisTick: {
                                 alignWithLabel: true
+                            },
+                            axisLabel: {
+                                interval:0,
+                                rotate:40 
                             }
                         },
                         yAxis: {
