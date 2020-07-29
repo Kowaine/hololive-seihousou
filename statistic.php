@@ -23,7 +23,7 @@
 </head>
 <body>
     <?php include 'components/nav.php' ?>
-    <div class="container">
+    <div class="container-fluid d-flex flex-row flex-wrap justify-content-around align-items-center">
         <?php
 
             // 读取文件
@@ -42,7 +42,7 @@
                 foreach($tagList as $tag)
                 {
                     $generation = $data[$tag];
-                    echo '<div id="' . $tag . '" style="width:100%;height:30em;"></div>';
+                    echo '<div id="' . $tag . '" class="m-3 border-bottom" style="width:30%;height:30em;"></div>';
                     $names = array();
                     $liveCount = array();
                     foreach($generation as $vtb)
@@ -59,7 +59,9 @@
                     // 指定图表的配置项和数据
                     var option = {
                         title: {
-                            text: "' . $tag . '"
+                            text: "' . $tag . '",
+                            subtext: "直播次数统计",
+                            x: "center"
                         },
                         color: ["#3398DB"],
                         tooltip: {
